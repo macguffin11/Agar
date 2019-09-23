@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : Utilities
 {
     public GameObject splitMass;
+    public GameObject food;
 
     public float movementSpeed = 50.0f;
     public float maxMovementSpeed = 3.0f;
     public float massSplitMultiplier = 0.5f;
-    public float increase = 0.05f;
+    public float increase = 0.1f;
     public Vector2 movement;
     public Vector2 mouseDistance;
+    public float deltaTime;
     public string eatSound = "EatSound";
     public string spawnSound = "SpawnSound";
     public string mergeSound = "MergeSound";
@@ -45,7 +48,8 @@ public class PlayerController : Utilities
         movement.y = Input.GetAxis("Vertical") + mouseDistance.y;
         movement.x = Mathf.Clamp(movement.x, -maxMovementSpeed, maxMovementSpeed);
         movement.y = Mathf.Clamp(movement.y, -maxMovementSpeed, maxMovementSpeed);
-        rigidBody2D.velocity = movement * movementSpeed * Time.deltaTime;
+        deltaTime = Time.deltaTime;
+        rigidBody2D.velocity = (movement / transform.localScale) * movementSpeed * deltaTime;
     }
 
     // Update is called once per frame
@@ -53,16 +57,41 @@ public class PlayerController : Utilities
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (transform.localScale.x * massSplitMultiplier >= 1.0f)
+            if (transform.localScale.x * massSplitMultiplier >= 0.5f)
             {
                 audioManager.PlaySound(mergeSound);
-                transform.localScale = transform.localScale * massSplitMultiplier;
-                GameObject newSplitMass = Instantiate(splitMass, transform.position + new Vector3(-0.6f, 0.8f, 0), transform.rotation) as GameObject;
-                newSplitMass.transform.localScale = transform.localScale;
+                float tempX = transform.localScale.x;
+                float tempY = transform.localScale.y;
+                float diff = Mathf.PI * tempX * tempY - ((Mathf.PI * tempX * tempY) * 0.5f);
+                tempX = tempY = Mathf.Sqrt(diff / Mathf.PI);
+                transform.localScale = new Vector3(tempX, tempY, 0);
+                GameObject newSplitMass = Instantiate(splitMass, transform.position + new Vector3(-tempX * 1.5f, tempY * 1.5f, 0), transform.rotation) as GameObject;
+                newSplitMass.transform.localScale = new Vector3(tempX, tempY, 0);
             }
             else
             {
                 Print("Can't split mass!", "log");
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            if (transform.localScale.x * 0.72f >= 1.0f)
+            {
+                audioManager.PlaySound(mergeSound);
+                float tempX = transform.localScale.x;
+                float tempY = transform.localScale.y;
+                float foodScale = Mathf.PI * transform.localScale.x * transform.localScale.y * 0.28f;
+                float diff = Mathf.PI * tempX * tempY - foodScale;
+                tempX = tempY = Mathf.Sqrt(diff / Mathf.PI);
+                foodScale = Mathf.Sqrt(foodScale / Mathf.PI);
+                transform.localScale = new Vector3(tempX, tempY, 0);
+                GameObject newFood = Instantiate(food, transform.position + new Vector3(-tempX * 1.5f, tempY * 1.5f, 0), transform.rotation) as GameObject;
+                newFood.transform.localScale = new Vector3(foodScale, foodScale, 0);
+            }
+            else
+            {
+                Print("Can't shoot mass!", "log");
             }
         }
     }
@@ -73,7 +102,7 @@ public class PlayerController : Utilities
         {
             Print("Ate food", "log");
             audioManager.PlaySound(eatSound);
-            transform.localScale += new Vector3(increase, increase, 0);
+            transform.localScale += new Vector3(increase, increase);
             other.GetComponent<Food>().RemoveObject();
             gameManager.ChangeScore(10);
         }
@@ -81,7 +110,11 @@ public class PlayerController : Utilities
         {
             Print("Collided with mass", "log");
             audioManager.PlaySound(mergeSound);
-            transform.localScale = transform.localScale * 2.0f;
+            float tempX = transform.localScale.x;
+            float tempY = transform.localScale.y;
+            float sum = Mathf.PI * tempX * tempY + Mathf.PI * other.gameObject.transform.localScale.x * other.gameObject.transform.localScale.y;
+            tempX = tempY = Mathf.Sqrt(sum / Mathf.PI);
+            transform.localScale = new Vector3(tempX, tempY, 0);
             Destroy(other.gameObject);
         }
     }

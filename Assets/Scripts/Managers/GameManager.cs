@@ -91,6 +91,7 @@ public class GameManager : Utilities
 
         currentState = State.Preparing;
         GameObject newPlayer = Instantiate(playerPrefab, gameObject.transform.position, Quaternion.identity);
+        newPlayer.transform.localScale = new Vector3(1f, 1f);
         mainCamera.GetComponent<SmoothFollow2DCamera>().target = newPlayer.transform;
         mainCamera.GetComponent<SmoothFollow2DCamera>().enabled = true;
         audioManager.PlaySound(backgroundMusic);

@@ -61,7 +61,7 @@ public class Level : Utilities
             {
                 if (food.Count < maxFood)
                 {
-                    SpawnFood(1);
+                    SpawnFood(10);
                 }
 
                 accumulator = 0;
