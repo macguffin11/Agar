@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Text;
+using TMPro;
 
 public class MenuManager : Utilities
 {
     public GameObject pausePanel;
     public bool showFrameRate = true;
-    public Text scoreText;
-    public Text highscoreText;
-    public Text elapsedTimeText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highscoreText;
+    public TextMeshProUGUI elapsedTimeText;
     public string buttonHover = "ButtonHover";
     public string buttonPress = "ButtonPress";
 
@@ -40,10 +42,22 @@ public class MenuManager : Utilities
                 TogglePause();
             }
 
-            elapsedTimeText.text = gameManager.elapsedTime.ToString("F1");
+            elapsedTimeText.text = gameManager.playTime.ToString("F1");
             scoreText.text = "SCORE: " + gameManager.currentScore;
             highscoreText.text = "HIGH SCORE: " + gameManager.currentHighScore;
         }
+    }
+
+    public void PlayGame()
+    {
+        Debug.Log("Play!");
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+    }
+
+    public void MenuGame()
+    {
+        Debug.Log("Menu!");
+        SceneManager.LoadScene("Menu");
     }
 
     /// <summary>

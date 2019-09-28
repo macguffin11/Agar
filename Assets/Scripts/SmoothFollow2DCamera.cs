@@ -12,6 +12,7 @@ public class SmoothFollow2DCamera : MonoBehaviour
     [Tooltip("Multiplier for the movement speed")]
     [Range(0f, 5f)]
     public float smoothSpeed = 0.1f;
+    public Vector3 smoothedPosition;
     public Camera cam;
     public float zoom = 2.0f;
     public float curScale;
@@ -28,11 +29,11 @@ public class SmoothFollow2DCamera : MonoBehaviour
     {
         curScale = target.localScale.x;
         float newZoom = 1.0f / curScale;
-        zoom = Mathf.Lerp(zoom, newZoom, smoothSpeed);
-        cam.orthographicSize = 4.0f / zoom;
+        zoom = Mathf.Lerp(zoom, newZoom, 0.05f);
+        cam.orthographicSize = 3.0f / zoom;
 
         Vector3 position = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, position, smoothSpeed);
+        smoothedPosition = Vector3.Lerp(transform.position, position, smoothSpeed);
         transform.position = smoothedPosition;
         transform.LookAt(target);
     }

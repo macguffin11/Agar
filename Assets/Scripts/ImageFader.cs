@@ -19,7 +19,6 @@ public class ImageFader : MonoBehaviour
         fadeOutUIImage = GetComponent<Image>();
         StartCoroutine(Fade(FadeDirection.Out));
     }
-
     public void Reset()
     {
         fadeOutUIImage.enabled = true;

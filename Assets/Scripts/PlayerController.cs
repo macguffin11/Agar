@@ -7,12 +7,12 @@ public class PlayerController : Utilities
     public GameObject splitMass;
     public GameObject food;
 
-    public float movementSpeed = 50.0f;
+    private float movementSpeed = 10f;
     public float maxMovementSpeed = 3.0f;
     public float massSplitMultiplier = 0.5f;
     public float increase = 0.1f;
-    public Vector2 movement;
-    public Vector2 mouseDistance;
+    public Vector2 direction;
+    public Vector3 mousePosition;
     public float deltaTime;
     public string eatSound = "EatSound";
     public string spawnSound = "SpawnSound";
@@ -42,14 +42,20 @@ public class PlayerController : Utilities
     // FixedUpdate is used for physics
     private void FixedUpdate()
     {
-        mouseDistance.x = (Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.position).x) * 0.005f;
+        /*mouseDistance.x = (Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.position).x) * 0.005f;
         mouseDistance.y = (Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.position).y) * 0.005f;
         movement.x = Input.GetAxis("Horizontal") + mouseDistance.x;
         movement.y = Input.GetAxis("Vertical") + mouseDistance.y;
         movement.x = Mathf.Clamp(movement.x, -maxMovementSpeed, maxMovementSpeed);
         movement.y = Mathf.Clamp(movement.y, -maxMovementSpeed, maxMovementSpeed);
         deltaTime = Time.deltaTime;
-        rigidBody2D.velocity = (movement / transform.localScale) * movementSpeed * deltaTime;
+        rigidBody2D.velocity = (movement / transform.localScale) * movementSpeed * deltaTime;*/
+
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        direction = (mousePosition - transform.position).normalized;
+        Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
+        rigidBody2D.velocity = newVelocity / transform.localScale;
+        rigidBody2D.rotation = 0f;
     }
 
     // Update is called once per frame

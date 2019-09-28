@@ -17,11 +17,12 @@ public class GameManager : Utilities
     private AudioManager audioManager;
     private Camera mainCamera;
     private Level level;
+    private ImageFader imgFad;
 
     // Awake is always called before any Start functions
     void Awake()
     {
-
+        
     }
 
     // Use this for initialization
@@ -42,6 +43,11 @@ public class GameManager : Utilities
         {
             Print("No Level found!", "error");
         }
+        imgFad = FindObjectOfType<ImageFader>();
+        if (imgFad == null)
+        {
+            Print("No ImageFader found!", "error");
+        }
 
         Load();
     }
@@ -49,6 +55,11 @@ public class GameManager : Utilities
     // Update is called once per frame
     void Update()
     {
+        /*if (SceneManager.GetActiveScene().name == "Main")
+        {
+            Play();
+        }*/
+        
         elapsedTime = Time.time;
 
         if (currentState == State.Playing)
@@ -129,7 +140,9 @@ public class GameManager : Utilities
     public void Reset()
     {
         currentScore = 0;
+        currentHighScore = 0;
         playTime = 0.0f;
+        elapsedTime = 0.0f;
     }
 
     /// <summary>
