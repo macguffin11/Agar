@@ -10,6 +10,7 @@ public class MenuManager : Utilities
 {
     public GameObject pausePanel;
     public bool showFrameRate = true;
+    public TextMeshProUGUI inputName;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highscoreText;
     public TextMeshProUGUI elapsedTimeText;

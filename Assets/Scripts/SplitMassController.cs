@@ -1,25 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class SplitMassController : Utilities
 {
     public GameObject splitMass;
 
-    public float movementSpeed = 50.0f;
-    public float massSplitMultiplier = 0.5f;
-    public float increase = 0.05f;
-    public Vector2 movement;
-    public Vector2 mouseDistance;
+    public TextMeshProUGUI inputName;
+    private float movementSpeed = 6.0f;
+    private float massEject;
+    public float increase;
+    public Vector2 direction;
+    public Vector3 mousePosition;
 
     private Rigidbody2D rigidBody2D;
     private GameManager gameManager;
+    private MenuManager menuManager;
 
     // Use this for initialization
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         gameManager = FindObjectOfType<GameManager>();
+        menuManager = FindObjectOfType<MenuManager>();
+        inputName.text = menuManager.inputName.text;
+        massEject = Mathf.Sqrt(35f / Mathf.PI);
         if (gameManager == null)
         {
             Print("No GameManager found!", "error");
@@ -29,11 +35,11 @@ public class SplitMassController : Utilities
     // FixedUpdate is used for physics
     private void FixedUpdate()
     {
-        mouseDistance.x = (Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.position).x) * 0.005f;
-        mouseDistance.y = (Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.position).y) * 0.005f;
-        movement.x = Input.GetAxis("Horizontal") + mouseDistance.x;
-        movement.y = Input.GetAxis("Vertical") + mouseDistance.y;
-        rigidBody2D.velocity = movement * movementSpeed * Time.deltaTime;
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        direction = (mousePosition - transform.position).normalized;
+        Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
+        rigidBody2D.velocity = newVelocity / transform.localScale;
+        rigidBody2D.rotation = rigidBody2D.velocity.x;
     }
 
     // Update is called once per frame
@@ -41,11 +47,14 @@ public class SplitMassController : Utilities
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (transform.localScale.x * massSplitMultiplier >= 1.0f)
+            if (transform.localScale.x >= massEject)
             {
-                transform.localScale = transform.localScale * massSplitMultiplier;
-                GameObject newSplitMass = Instantiate(splitMass, transform.position + new Vector3(-0.6f, 0.8f, 0), transform.rotation) as GameObject;
-                newSplitMass.transform.localScale = transform.localScale;
+                float radPlayer = transform.localScale.x;
+                float diff = Mathf.PI * radPlayer * radPlayer - ((Mathf.PI * radPlayer * radPlayer) * 0.5f);
+                radPlayer = Mathf.Sqrt(diff / Mathf.PI);
+                transform.localScale = new Vector3(radPlayer, radPlayer, 0);
+                GameObject newSplitMass = Instantiate(splitMass, transform.position + new Vector3(-radPlayer * 1.5f, radPlayer * 1.5f, 0), transform.rotation) as GameObject;
+                newSplitMass.transform.localScale = new Vector3(radPlayer, radPlayer, 0);
             }
             else
             {
@@ -59,9 +68,13 @@ public class SplitMassController : Utilities
         if (other.gameObject.tag == "Food")
         {
             Print("Ate food", "log");
-            transform.localScale += new Vector3(increase, increase, 0);
+            float radPlayer = transform.localScale.x;
+            float radFood = other.GetComponent<Food>().transform.localScale.x;
+            float sum = Mathf.PI * radPlayer * radPlayer + Mathf.PI * radFood * radFood;
+            increase = Mathf.Sqrt(sum / Mathf.PI);
+            transform.localScale = new Vector3(increase, increase);
             other.GetComponent<Food>().RemoveObject();
-            gameManager.ChangeScore(10);
+            gameManager.ChangeScore(1);
         }
     }
 }

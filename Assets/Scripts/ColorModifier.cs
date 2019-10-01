@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SVGImporter;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,6 @@ public class ColorModifier : MonoBehaviour
 
     void Awake()
     {
-        GetComponent<SpriteRenderer>().color = colors[Random.Range(0, colors.Count)];
+        GetComponent<SVGRenderer>().color = colors[Random.Range(0, colors.Count)];
     }
 }

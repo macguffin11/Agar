@@ -21,7 +21,7 @@ public class Food : Utilities
             Print("No Level found!", "error");
         }
 
-        int foodScore = gameManager.currentScore;
+        /*int foodScore = gameManager.currentScore;
         if (foodScore < 500)
         {
             int increase = 0;
@@ -31,7 +31,7 @@ public class Food : Utilities
         if (foodScore > 499)
         {
             transform.localScale += new Vector3(0.4f, 0.4f, 0f);
-        }
+        }*/
     }
 	
 	// Update is called once per frame

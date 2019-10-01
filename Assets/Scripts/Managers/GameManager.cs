@@ -9,7 +9,7 @@ public class GameManager : Utilities
     public State currentState;
     public float elapsedTime = 0.0f;
     public float playTime = 0.0f;
-    public int currentScore = 0;
+    public int currentScore = 10;
     public int currentHighScore = 0;
     public GameObject playerPrefab;
     public string backgroundMusic = "BackgroundMusic";
@@ -48,7 +48,7 @@ public class GameManager : Utilities
         {
             Print("No ImageFader found!", "error");
         }
-
+        Time.timeScale = 1.0f;
         Load();
     }
 
@@ -102,7 +102,8 @@ public class GameManager : Utilities
 
         currentState = State.Preparing;
         GameObject newPlayer = Instantiate(playerPrefab, gameObject.transform.position, Quaternion.identity);
-        newPlayer.transform.localScale = new Vector3(1f, 1f);
+        float radius = Mathf.Sqrt(10f / Mathf.PI);
+        newPlayer.transform.localScale = new Vector3(radius, radius);
         mainCamera.GetComponent<SmoothFollow2DCamera>().target = newPlayer.transform;
         mainCamera.GetComponent<SmoothFollow2DCamera>().enabled = true;
         audioManager.PlaySound(backgroundMusic);
@@ -139,8 +140,7 @@ public class GameManager : Utilities
     /// </summary>
     public void Reset()
     {
-        currentScore = 0;
-        currentHighScore = 0;
+        currentScore = 10;
         playTime = 0.0f;
         elapsedTime = 0.0f;
     }
