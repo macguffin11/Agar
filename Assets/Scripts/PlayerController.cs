@@ -75,25 +75,6 @@ public class PlayerController : Utilities
                 Print("Can't split mass!", "log");
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            if (transform.localScale.x >= massEject)
-            {
-                audioManager.PlaySound(mergeSound);
-                float radPlayer = transform.localScale.x;
-                float radFood = Mathf.Sqrt(15f / Mathf.PI);
-                float diff = Mathf.PI * radPlayer * radPlayer - 18f;
-                radPlayer = Mathf.Sqrt(diff / Mathf.PI);
-                transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-                GameObject newFood = Instantiate(food, transform.position + new Vector3(-radPlayer * 1.5f, radPlayer * 1.5f, 0), transform.rotation) as GameObject;
-                newFood.transform.localScale = new Vector3(radFood, radFood, 0);
-            }
-            else
-            {
-                Print("Can't shoot mass!", "log");
-            }
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

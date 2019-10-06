@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SVGImporter;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -92,6 +93,19 @@ public class Level : Utilities
         {
             Vector3 position = new Vector3(Random.Range(-spawnField.x, spawnField.x), Random.Range(-spawnField.y, spawnField.y), 0.0f);
             GameObject newFood = Instantiate(foodPrefab, position, Quaternion.identity);
+            newFood.transform.parent = gameObject.transform;
+            newFood.transform.localScale = new Vector3(radius, radius);
+            food.Add(newFood);
+        }
+    }
+    public void SpawnFood(int amount, float radius, Vector3 newPos, float newRotation, Color newColor)
+    {
+        print("Spawning food: " + amount);
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject newFood = Instantiate(foodPrefab, newPos, Quaternion.identity);
+            newFood.GetComponent<Rigidbody2D>().rotation = newRotation;
+            newFood.GetComponent<SVGRenderer>().color = newColor;
             newFood.transform.parent = gameObject.transform;
             newFood.transform.localScale = new Vector3(radius, radius);
             food.Add(newFood);
