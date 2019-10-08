@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : Utilities
+public class Splitting : Utilities
 {
-    public GameObject bulletPrefab;
+    public GameObject splitting;
     private AudioManager audioManager;
     //public GameObject bulletStart;
 
@@ -17,7 +17,6 @@ public class Shooting : Utilities
     // Use this for initialization
     void Start()
     {
-        sizeShoot = new Vector3(Mathf.Sqrt(18f / Mathf.PI), Mathf.Sqrt(18f / Mathf.PI), 0f);
         audioManager = FindObjectOfType<AudioManager>();
         massEject = Mathf.Sqrt(35f / Mathf.PI);
         if (audioManager == null)
@@ -30,7 +29,7 @@ public class Shooting : Utilities
     void Update()
     {
         //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
+        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //crosshairs.transform.position = new Vector2(target.x, target.y);
 
@@ -38,15 +37,16 @@ public class Shooting : Utilities
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             if (transform.localScale.x >= massEject)
             {
                 audioManager.PlaySound("MergeSound");
                 float radPlayer = transform.localScale.x;
-                float diff = Mathf.PI * radPlayer * radPlayer - 18f;
+                float diff = Mathf.PI * radPlayer * radPlayer - ((Mathf.PI * radPlayer * radPlayer) * 0.5f);
                 radPlayer = Mathf.Sqrt(diff / Mathf.PI);
                 transform.localScale = new Vector3(radPlayer, radPlayer, 0);
+                sizeShoot = new Vector3(radPlayer, radPlayer, 0);
 
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;
@@ -55,17 +55,18 @@ public class Shooting : Utilities
             }
             else
             {
-                Print("Can't shoot mass!", "log");
+                Print("Can't split mass!", "log");
             }
         }
     }
 
     void fireBullet(Vector2 direction, float rotationZ)
     {
-        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        GameObject b = Instantiate(splitting) as GameObject;
         b.transform.localScale = sizeShoot;
         b.transform.position = transform.position;
         b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        b.GetComponent<SplitMassController>().target = target;
     }
 }

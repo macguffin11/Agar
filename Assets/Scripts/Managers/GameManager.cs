@@ -55,11 +55,6 @@ public class GameManager : Utilities
     // Update is called once per frame
     void Update()
     {
-        /*if (SceneManager.GetActiveScene().name == "Main")
-        {
-            Play();
-        }*/
-        
         elapsedTime = Time.time;
 
         if (currentState == State.Playing)

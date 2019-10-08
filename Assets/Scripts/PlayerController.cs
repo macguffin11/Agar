@@ -5,8 +5,6 @@ using TMPro;
 
 public class PlayerController : Utilities
 {
-    public GameObject splitMass;
-    public GameObject food;
 
     public TextMeshProUGUI inputName;
     private float movementSpeed = 10f;
@@ -51,30 +49,14 @@ public class PlayerController : Utilities
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - transform.position).normalized;
         Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
-        rigidBody2D.velocity = newVelocity / transform.localScale;
+        rigidBody2D.velocity = newVelocity / (transform.localScale / 2);
         rigidBody2D.rotation = rigidBody2D.velocity.x;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if (transform.localScale.x >= massEject)
-            {
-                audioManager.PlaySound(mergeSound);
-                float radPlayer = transform.localScale.x;
-                float diff = Mathf.PI * radPlayer * radPlayer - ((Mathf.PI * radPlayer * radPlayer) * 0.5f);
-                radPlayer = Mathf.Sqrt(diff / Mathf.PI);
-                transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-                GameObject newSplitMass = Instantiate(splitMass, transform.position + new Vector3(-radPlayer * 1.5f, radPlayer * 1.5f, 0), transform.rotation) as GameObject;
-                newSplitMass.transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-            }
-            else
-            {
-                Print("Can't split mass!", "log");
-            }
-        }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -91,7 +73,7 @@ public class PlayerController : Utilities
             other.GetComponent<Food>().RemoveObject();
             gameManager.ChangeScore(1);
         }
-        else if (other.gameObject.tag == "SplitMass")
+        else if (other.gameObject.tag == "SplitMass" && other.GetComponent<SplitMassController>().splitTime >= 5f)
         {
             Print("Collided with mass", "log");
             audioManager.PlaySound(mergeSound);

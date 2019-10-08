@@ -35,6 +35,7 @@ public class Bullet : Utilities
             rigidBody2D.velocity -= temp * 0.01f;
         }else
         {
+            rigidBody2D.velocity = Vector2.zero;
             level.SpawnFood(1, transform.localScale.x, transform.position, rigidBody2D.rotation, GetComponent<SVGRenderer>().color);
             Destroy(gameObject);
         }

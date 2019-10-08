@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 58611315897484584}
   - component: {fileID: 6475272316895521959}
   - component: {fileID: 164172311851728893}
+  - component: {fileID: 2848708961274352591}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -121,8 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b43164d8545df846ac06c3d09f6a71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splitMass: {fileID: 1732001593137428, guid: 6fbbf65dba7ac8244b436ede91b69878, type: 3}
-  food: {fileID: 1129988766283344, guid: 93a87473f7d089648b60ecc33cce4cdd, type: 3}
   inputName: {fileID: 6250129138944637663}
   increase: 0.01
   direction: {x: 0, y: 0}
@@ -225,10 +224,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be38e1b28122df4f9143bd29c71102f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshairs: {fileID: 1129988766283344, guid: b19b7b8e50553b049830a78710434801, type: 3}
   bulletPrefab: {fileID: 1129988766283344, guid: b19b7b8e50553b049830a78710434801,
     type: 3}
   bulletSpeed: 10
+  sizeShoot: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
+--- !u!114 &2848708961274352591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369636560395714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a2719820600f74ba1da8d1428666af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitting: {fileID: 1732001593137428, guid: 6fbbf65dba7ac8244b436ede91b69878, type: 3}
+  bulletSpeed: 20
   sizeShoot: {x: 0, y: 0, z: 0}
   target: {x: 0, y: 0, z: 0}
 --- !u!1 &3630321214774084398
