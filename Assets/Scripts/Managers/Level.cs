@@ -146,7 +146,7 @@ public class Level : Utilities
             float tilesOnY = (spawnField.y * 2) / spriteHeight;
             tileCount = Mathf.CeilToInt(tilesOnX) * Mathf.CeilToInt(tilesOnY);
 
-            Print("Spawning " + tileCount + " tiles");
+            //Print("Spawning " + tileCount + " tiles");
 
             for (int y = 0; y < tilesOnY + 1; y++)
             {

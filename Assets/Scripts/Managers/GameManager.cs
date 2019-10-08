@@ -17,6 +17,7 @@ public class GameManager : Utilities
     private AudioManager audioManager;
     private Camera mainCamera;
     private Level level;
+    private WaveEnemy gelombang;
     private ImageFader imgFad;
 
     // Awake is always called before any Start functions
@@ -47,6 +48,11 @@ public class GameManager : Utilities
         if (imgFad == null)
         {
             Print("No ImageFader found!", "error");
+        }
+        gelombang = FindObjectOfType<WaveEnemy>();
+        if (gelombang == null)
+        {
+            Print("No Gelombang found!", "error");
         }
         Time.timeScale = 1.0f;
         Load();
@@ -109,6 +115,7 @@ public class GameManager : Utilities
         audioManager.PlaySound(backgroundMusic);
         Reset();
         level.PrepareLevel();
+        //gelombang.GetComponent<WaveEnemy>().
         currentState = State.Playing;
     }
 

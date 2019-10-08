@@ -69,4 +69,6 @@ public class Shooting : Utilities
         b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
     }
+
+    
 }

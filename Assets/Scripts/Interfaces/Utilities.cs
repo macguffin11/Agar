@@ -33,7 +33,7 @@ public class Utilities : MonoBehaviour
     /// <summary>
     /// Prints the given message in the console with extra information.
     /// </summary>
-    public void Print(string message)
+    public void Print(string message, float timetoDash)
     {
         Debug.Log(gameObject.name + ": " + message + " @ " + Time.time + " seconds.");
     }

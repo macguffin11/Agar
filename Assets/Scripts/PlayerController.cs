@@ -75,6 +75,10 @@ public class PlayerController : Utilities
                 Print("Can't split mass!", "log");
             }
         }
+        if (gameManager.currentScore <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -100,6 +104,10 @@ public class PlayerController : Utilities
             radPlayer = Mathf.Sqrt(sum / Mathf.PI);
             transform.localScale = new Vector3(radPlayer, radPlayer, 0);
             Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            gameManager.ChangeScore(-1);
         }
     }
 }

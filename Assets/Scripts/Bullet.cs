@@ -40,6 +40,16 @@ public class Bullet : Utilities
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            //Print("Enemyyyyyyy");
+            Destroy(gameObject);
+            other.GetComponent<EnemyController>().RemoveObject();
+        }
+    }
+
     public void RemoveObject()
     {
         level.food.Remove(gameObject);
