@@ -6,10 +6,10 @@ using TMPro;
 public class SplitMassController : Utilities
 {
     public GameObject splitMass;
-    public Vector3 target;
+    public Vector2 target;
 
     public TextMeshProUGUI inputName;
-    private float movementSpeed = 6.0f;
+    private float movementSpeed = 10.0f;
     private float massEject;
     public float splitTime = 0f;
     private Vector2 temp;
@@ -44,9 +44,11 @@ public class SplitMassController : Utilities
     // FixedUpdate is used for physics
     private void FixedUpdate()
     {
-        if ( Vector3.Distance(transform.position, target) > 0 && move)
+        if (new Vector2(Mathf.Round(target.x * 1) / 1, Mathf.Round(target.y * 1) / 1) != new Vector2(Mathf.Round(transform.position.x * 1) / 1, Mathf.Round(transform.position.y * 1) / 1) && move)
         {
-            rigidBody2D.velocity -= temp;
+            //rigidBody2D.velocity -= temp;
+            Vector2 direction = (target - new Vector2(transform.position.x, transform.position.y)).normalized;
+            rigidBody2D.velocity = direction * 10;
         }
         else
         {
@@ -56,7 +58,6 @@ public class SplitMassController : Utilities
             direction = (mousePosition - transform.position).normalized;
             Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
             rigidBody2D.velocity = newVelocity / transform.localScale;
-            rigidBody2D.rotation = rigidBody2D.velocity.x;
         }
     }
 
@@ -64,22 +65,6 @@ public class SplitMassController : Utilities
     private void Update()
     {
         splitTime += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if (transform.localScale.x >= massEject)
-            {
-                float radPlayer = transform.localScale.x;
-                float diff = Mathf.PI * radPlayer * radPlayer - ((Mathf.PI * radPlayer * radPlayer) * 0.5f);
-                radPlayer = Mathf.Sqrt(diff / Mathf.PI);
-                transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-                GameObject newSplitMass = Instantiate(splitMass, transform.position + new Vector3(-radPlayer * 1.5f, radPlayer * 1.5f, 0), transform.rotation) as GameObject;
-                newSplitMass.transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-            }
-            else
-            {
-                Print("Can't split mass!", "log");
-            }
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -98,6 +98,19 @@ public class Level : Utilities
             food.Add(newFood);
         }
     }
+    public void SpawnFood(int amount, Vector3 pos)
+    {
+        print("Spawning food: " + amount);
+        for (int i = 0; i < amount; i++)
+        {
+            Vector3 position = new Vector3(Random.Range(pos.x - 2, pos.x + 2), Random.Range(pos.y - 2, pos.y + 2), 0.0f);
+            GameObject newFood = Instantiate(foodPrefab, position, Quaternion.identity);
+            newFood.transform.parent = gameObject.transform;
+            newFood.transform.localScale = new Vector3(radius, radius);
+            food.Add(newFood);
+        }
+    }
+
     public void SpawnFood(int amount, float radius, Vector3 newPos, float newRotation, Color newColor)
     {
         print("Spawning food: " + amount);
@@ -123,7 +136,7 @@ public class Level : Utilities
             Vector3 position = new Vector3(Random.Range(-spawnField.x, spawnField.x), Random.Range(-spawnField.y, spawnField.y), 0.0f);
             GameObject newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
             newEnemy.transform.parent = gameObject.transform;
-            float radius = Mathf.Sqrt(10f / Mathf.PI);
+            float radius = Mathf.Sqrt(50f / Mathf.PI);
             newEnemy.transform.localScale = new Vector3(radius, radius);
             enemy.Add(newEnemy);
         }
@@ -146,7 +159,7 @@ public class Level : Utilities
             float tilesOnY = (spawnField.y * 2) / spriteHeight;
             tileCount = Mathf.CeilToInt(tilesOnX) * Mathf.CeilToInt(tilesOnY);
 
-            Print("Spawning " + tileCount + " tiles");
+            //Print("Spawning " + tileCount + " tiles");
 
             for (int y = 0; y < tilesOnY + 1; y++)
             {

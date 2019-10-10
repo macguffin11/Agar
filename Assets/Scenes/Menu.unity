@@ -215,8 +215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -76}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 240, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152576517
 MonoBehaviour:
@@ -476,8 +476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -36}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -45}
+  m_SizeDelta: {x: 240, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &660724314
 MonoBehaviour:
@@ -705,8 +705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -156}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -210}
+  m_SizeDelta: {x: 240, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864824238
 MonoBehaviour:
@@ -1771,8 +1771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -116}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -155}
+  m_SizeDelta: {x: 240, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885982782
 MonoBehaviour:
@@ -1975,3 +1975,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9641903818a084ab909db64bba1ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &3402737059976079668
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4655208169112377303, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_Name
+      value: WaveEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.9146233
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.43772
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.05965759
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377297, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655208169112377296, guid: 7a90a1280e8a45640ae1b5ee86db2e42,
+        type: 3}
+      propertyPath: waves.Array.data[2].name
+      value: Wave3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a90a1280e8a45640ae1b5ee86db2e42, type: 3}

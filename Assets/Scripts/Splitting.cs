@@ -51,7 +51,7 @@ public class Splitting : Utilities
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;
                 direction.Normalize();
-                fireBullet(direction, rotationZ);
+                fireBullet(difference, rotationZ);
             }
             else
             {

@@ -34,7 +34,7 @@ public class Shooting : Utilities
 
         //crosshairs.transform.position = new Vector2(target.x, target.y);
 
-        Vector3 difference = target - transform.position;
+        Vector3 difference = (target - transform.position).normalized;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
 
@@ -51,7 +51,7 @@ public class Shooting : Utilities
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;
                 direction.Normalize();
-                fireBullet(direction, rotationZ);
+                fireBullet(difference, rotationZ);
             }
             else
             {
@@ -64,6 +64,7 @@ public class Shooting : Utilities
     {
         GameObject b = Instantiate(bulletPrefab) as GameObject;
         b.transform.localScale = sizeShoot;
+        b.GetComponent<Bullet>().temp = target;
         b.transform.position = transform.position;
         b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3100407356572926490}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 8301935607867559197}
   - component: {fileID: 5534806749332623427}
   - component: {fileID: 4955083817914820551}
+  - component: {fileID: 7796107486649076969}
   m_Layer: 0
   m_Name: Bacteriophage
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _lastTimeModified: 637053684609153178
+  _lastTimeModified: 637053713030848142
   _vectorGraphics: {fileID: 11400000, guid: 90f19eb166d42934ebf355408064b782, type: 2}
   _color: {r: 1, g: 0, b: 0.7462845, a: 1}
   _opaqueMaterial: {fileID: 0}
@@ -146,4 +147,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  speedmovement: 5
+  timeBeforeDash: 3
   target: {fileID: 0}
+  Area: 10
+--- !u!61 &7796107486649076969
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983231916637587165}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000029802322, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5035424, y: 1.1457026}
+  m_EdgeRadius: 0

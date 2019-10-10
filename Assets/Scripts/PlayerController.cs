@@ -50,13 +50,15 @@ public class PlayerController : Utilities
         direction = (mousePosition - transform.position).normalized;
         Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
         rigidBody2D.velocity = newVelocity / (transform.localScale / 2);
-        rigidBody2D.rotation = rigidBody2D.velocity.x;
     }
 
     // Update is called once per frame
     private void Update()
     {
-
+        if (gameManager.currentScore <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -82,6 +84,10 @@ public class PlayerController : Utilities
             radPlayer = Mathf.Sqrt(sum / Mathf.PI);
             transform.localScale = new Vector3(radPlayer, radPlayer, 0);
             Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            gameManager.ChangeScore(-1);
         }
     }
 }
