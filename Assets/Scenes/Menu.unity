@@ -890,12 +890,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26929ed3fa3e1f469e3a1b2bc6ccb69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.49803925, g: 0.6627451, b: 1, a: 1}
-  - {r: 0.6392157, g: 0.8313726, b: 0.43137258, a: 1}
-  - {r: 1, g: 0.81568635, b: 0.4431373, a: 1}
-  - {r: 0.9450981, g: 0.4431373, b: 0.4431373, a: 1}
-  - {r: 0.4431373, g: 0.8862746, b: 0.8117648, a: 1}
+  sprites:
+  - {fileID: 21300000, guid: 5520d3da156461b4793aa3cc7f4e3bf1, type: 3}
+  - {fileID: 21300000, guid: de57d089e68a4f04eb139a43b1361432, type: 3}
+  - {fileID: 21300000, guid: 273db600fabbde64aaebc293866cdba8, type: 3}
+  - {fileID: 21300000, guid: 12d87f0632f402240a44f11f8764fb19, type: 3}
+  - {fileID: 21300000, guid: 252fc990bf567f24eb54c55df129f0e9, type: 3}
   speed: 75
   z: 0
 --- !u!114 &871879095
