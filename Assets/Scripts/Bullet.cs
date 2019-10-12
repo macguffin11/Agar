@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using SVGImporter;
 
 public class Bullet : Utilities
 {
@@ -39,7 +38,7 @@ public class Bullet : Utilities
         else
         {
             rigidBody2D.velocity = Vector2.zero;
-            level.SpawnFood(1, transform.localScale.x, transform.position, 18, GetComponent<SVGRenderer>().color);
+            level.SpawnFood(1, transform.localScale.x, transform.position, 18);
             Destroy(gameObject);
         }
     }

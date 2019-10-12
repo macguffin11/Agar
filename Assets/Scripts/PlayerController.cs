@@ -87,6 +87,10 @@ public class PlayerController : Utilities
         }
         else if (other.gameObject.tag == "Enemy")
         {
+            float radPlayer = transform.localScale.x;
+            float diff = (Mathf.PI * radPlayer * radPlayer) - 5f;
+            radPlayer = Mathf.Sqrt(diff / Mathf.PI);
+            transform.localScale = new Vector3(radPlayer, radPlayer, 0);
             gameManager.ChangeScore(-5);
         }
     }

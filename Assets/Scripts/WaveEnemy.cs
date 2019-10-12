@@ -24,10 +24,15 @@ public class WaveEnemy : MonoBehaviour
 
     private float searchCountdown = 1f;
 
-    private SpawnState state = SpawnState.COUNTING;
+    private SpawnState state = SpawnState.SPAWNING;
 
     void Start()
     {
+
+    }
+    public void Play()
+    {
+        state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
     }
 
