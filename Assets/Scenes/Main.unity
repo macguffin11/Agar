@@ -2229,16 +2229,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 20533323988921722, guid: a358964e96b3bf14382b1e8af40c9b76,
-        type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 20533323988921722, guid: a358964e96b3bf14382b1e8af40c9b76,
-        type: 3}
-      propertyPath: orthographic size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 114164888045297618, guid: a358964e96b3bf14382b1e8af40c9b76,
         type: 3}
       propertyPath: zoom
@@ -2597,7 +2587,7 @@ MonoBehaviour:
     enemy: {fileID: 2410802936229458690, guid: bc17bd93782934247b9b9d1497acf436, type: 3}
     count: 5
     rate: 2
-  spawnField: {x: 50, y: 50}
+  spawnField: {x: 40, y: 40}
   timeBetweenWaves: 5
 --- !u!4 &1217108868
 Transform:
@@ -2607,7 +2597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217108866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.992447, y: 7.2485967, z: -1.40625}
+  m_LocalPosition: {x: 0, y: 0, z: -1.40625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4253,12 +4243,12 @@ PrefabInstance:
     - target: {fileID: 114939495891213352, guid: 14727c2873401a8479262f3e98c9f4d0,
         type: 3}
       propertyPath: spawnField.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 114939495891213352, guid: 14727c2873401a8479262f3e98c9f4d0,
         type: 3}
       propertyPath: initialFoodAmount
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 114939495891213352, guid: 14727c2873401a8479262f3e98c9f4d0,
         type: 3}
@@ -4266,6 +4256,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2410802936229458690, guid: bc17bd93782934247b9b9d1497acf436,
         type: 3}
+    - target: {fileID: 114939495891213352, guid: 14727c2873401a8479262f3e98c9f4d0,
+        type: 3}
+      propertyPath: spawnField.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114939495891213352, guid: 14727c2873401a8479262f3e98c9f4d0,
+        type: 3}
+      propertyPath: spawnInterval
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14727c2873401a8479262f3e98c9f4d0, type: 3}
 --- !u!1 &2029255571
