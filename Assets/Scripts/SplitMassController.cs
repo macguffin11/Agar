@@ -9,7 +9,7 @@ public class SplitMassController : Utilities
     public Vector2 target;
 
     public TextMeshProUGUI inputName;
-    private float movementSpeed = 10.0f;
+    private float movementSpeed = 8.0f;
     private float massEject;
     public float splitTime = 0f;
     private Vector2 temp;
@@ -57,7 +57,7 @@ public class SplitMassController : Utilities
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direction = (mousePosition - transform.position).normalized;
             Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
-            rigidBody2D.velocity = newVelocity / transform.localScale;
+            rigidBody2D.velocity = newVelocity / (transform.localScale / 4);
         }
     }
 

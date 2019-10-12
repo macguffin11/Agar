@@ -49,7 +49,7 @@ public class PlayerController : Utilities
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - transform.position).normalized;
         Vector2 newVelocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
-        rigidBody2D.velocity = newVelocity / (transform.localScale / 2);
+        rigidBody2D.velocity = newVelocity / (transform.localScale / 4);
     }
 
     // Update is called once per frame
@@ -72,10 +72,10 @@ public class PlayerController : Utilities
             float sum = Mathf.PI * radPlayer * radPlayer + Mathf.PI * radFood * radFood;
             increase = Mathf.Sqrt(sum / Mathf.PI);
             transform.localScale = new Vector3(increase, increase);
+            gameManager.ChangeScore(other.GetComponent<Food>().score);
             other.GetComponent<Food>().RemoveObject();
-            gameManager.ChangeScore(1);
         }
-        else if (other.gameObject.tag == "SplitMass" && other.GetComponent<SplitMassController>().splitTime >= 5f)
+        else if (other.gameObject.tag == "SplitMass" && other.GetComponent<SplitMassController>().splitTime >= 10f)
         {
             Print("Collided with mass", "log");
             audioManager.PlaySound(mergeSound);

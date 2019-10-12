@@ -6,6 +6,8 @@ public class Food : Utilities
     private GameManager gameManager;
     private Level level;
 
+    public int score = 1;
+
     // Use this for initialization
     void Start ()
     {

@@ -111,13 +111,13 @@ public class Level : Utilities
         }
     }
 
-    public void SpawnFood(int amount, float radius, Vector3 newPos, float newRotation, Color newColor)
+    public void SpawnFood(int amount, float radius, Vector3 newPos, int newScore, Color newColor)
     {
         print("Spawning food: " + amount);
         for (int i = 0; i < amount; i++)
         {
             GameObject newFood = Instantiate(foodPrefab, newPos, Quaternion.identity);
-            newFood.GetComponent<Rigidbody2D>().rotation = newRotation;
+            newFood.GetComponent<Food>().score = newScore;
             newFood.GetComponent<SVGRenderer>().color = newColor;
             newFood.transform.parent = gameObject.transform;
             newFood.transform.localScale = new Vector3(radius, radius);
