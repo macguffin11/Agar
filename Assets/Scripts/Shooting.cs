@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooting : Utilities
 {
     public GameObject bulletPrefab;
+    private GameManager gameManager;
     private AudioManager audioManager;
     //public GameObject bulletStart;
 
@@ -18,8 +19,13 @@ public class Shooting : Utilities
     void Start()
     {
         sizeShoot = new Vector3(Mathf.Sqrt(18f / Mathf.PI), Mathf.Sqrt(18f / Mathf.PI), 0f);
+        gameManager = FindObjectOfType<GameManager>();
         audioManager = FindObjectOfType<AudioManager>();
         massEject = Mathf.Sqrt(35f / Mathf.PI);
+        if (gameManager == null)
+        {
+            Print("No GameManager found!", "error");
+        }
         if (audioManager == null)
         {
             Print("No AudioManager found!", "error");
@@ -44,9 +50,10 @@ public class Shooting : Utilities
             {
                 audioManager.PlaySound("MergeSound");
                 float radPlayer = transform.localScale.x;
-                float diff = Mathf.PI * radPlayer * radPlayer - 18f;
+                float diff = (Mathf.PI * radPlayer * radPlayer) - 18f;
                 radPlayer = Mathf.Sqrt(diff / Mathf.PI);
                 transform.localScale = new Vector3(radPlayer, radPlayer, 0);
+                gameManager.ChangeScore(-18);
 
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;

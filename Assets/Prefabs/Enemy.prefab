@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3100407356572926490}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410802936229458690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.169327, y: 0.15871139, z: 0.19042969}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6661430665175555633}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8301935607867559197}
   - component: {fileID: 5534806749332623427}
   - component: {fileID: 4955083817914820551}
-  - component: {fileID: 7796107486649076969}
+  - component: {fileID: 9081866620190221687}
   m_Layer: 0
   m_Name: Bacteriophage
   m_TagString: Enemy
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _lastTimeModified: 637053713030848142
+  _lastTimeModified: 637064593110047574
   _vectorGraphics: {fileID: 11400000, guid: 90f19eb166d42934ebf355408064b782, type: 2}
   _color: {r: 1, g: 0, b: 0.7462845, a: 1}
   _opaqueMaterial: {fileID: 0}
@@ -151,8 +151,8 @@ MonoBehaviour:
   timeBeforeDash: 3
   target: {fileID: 0}
   Area: 10
---- !u!61 &7796107486649076969
-BoxCollider2D:
+--- !u!60 &9081866620190221687
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000029802322, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -174,6 +174,46 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5035424, y: 1.1457026}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.46809787, y: 0.32328588}
+      - {x: 0.36653817, y: 0.17170858}
+      - {x: 0.34280744, y: 0.34056723}
+      - {x: 0.50526947, y: 0.53617775}
+      - {x: 0.4672029, y: 0.57010347}
+      - {x: 0.29512194, y: 0.3595095}
+      - {x: 0.32271868, y: 0.1540901}
+      - {x: 0.20743302, y: 0.2701091}
+      - {x: 0.2940477, y: 0.49523407}
+      - {x: 0.25119293, y: 0.51233864}
+      - {x: 0.15337816, y: 0.25649932}
+      - {x: 0.3332003, y: 0.07585524}
+      - {x: 0.33071357, y: 0.020021059}
+      - {x: 0.19976975, y: 0.017785192}
+      - {x: 0.010554746, y: 0.3262294}
+      - {x: -0.5544974, y: 0.32749838}
+      - {x: -0.7604521, y: 0.0015266389}
+      - {x: -0.55562305, y: -0.32637033}
+      - {x: 0.013228323, y: -0.32616085}
+      - {x: 0.19405355, y: -0.029050816}
+      - {x: 0.3313246, y: -0.029429734}
+      - {x: 0.33072796, y: -0.07873091}
+      - {x: 0.15430862, y: -0.25425473}
+      - {x: 0.2487475, y: -0.5085276}
+      - {x: 0.29882318, y: -0.4877443}
+      - {x: 0.20893626, y: -0.26468635}
+      - {x: 0.3244589, y: -0.1534025}
+      - {x: 0.2859554, y: -0.36181816}
+      - {x: 0.46741733, y: -0.56941426}
+      - {x: 0.5098996, y: -0.53921217}
+      - {x: 0.34366477, y: -0.3456874}
+      - {x: 0.37121984, y: -0.16710785}
+      - {x: 0.4688527, y: -0.32148895}
+      - {x: 0.73347735, y: -0.38383344}
+      - {x: 0.7564697, y: -0.33475268}
+      - {x: 0.49824667, y: -0.28215584}
+      - {x: 0.37763596, y: -0.10075714}
+      - {x: 0.3789079, y: 0.10586269}
+      - {x: 0.49812573, y: 0.27634954}
+      - {x: 0.7490439, y: 0.33990029}
+      - {x: 0.7343762, y: 0.37759593}

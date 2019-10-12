@@ -71,10 +71,10 @@ public class Level : Utilities
                     SpawnFood(10);
                 }
 
-                if (enemy.Count < maxEnemy)
+                /*if (enemy.Count < maxEnemy)
                 {
                     SpawnEnemy(10);
-                }
+                }*/
 
                 accumulator = 0;
             }

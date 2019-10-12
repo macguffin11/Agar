@@ -87,7 +87,7 @@ public class PlayerController : Utilities
         }
         else if (other.gameObject.tag == "Enemy")
         {
-            gameManager.ChangeScore(-1);
+            gameManager.ChangeScore(-5);
         }
     }
 }

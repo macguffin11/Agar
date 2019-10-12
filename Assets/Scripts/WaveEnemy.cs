@@ -10,7 +10,7 @@ public class WaveEnemy : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform enemy;
+        public GameObject enemy;
         public int count;
         public float rate;
     }
@@ -18,8 +18,9 @@ public class WaveEnemy : MonoBehaviour
     public Wave[] waves;
     private int nextWave = 0;
 
+    public Vector2 spawnField;
     public float timeBetweenWaves = 5f;
-    public float waveCountdown;
+    private float waveCountdown;
 
     private float searchCountdown = 1f;
 
@@ -52,10 +53,10 @@ public class WaveEnemy : MonoBehaviour
                 //Start spawning wave
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
-            else
-            {
-                waveCountdown -= Time.deltaTime;
-            }
+        }
+        else
+        {
+            waveCountdown -= Time.deltaTime;
         }
     }
 
@@ -91,10 +92,14 @@ public class WaveEnemy : MonoBehaviour
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(GameObject _enemy)
     {
         // Spawn enemy
-        Instantiate(_enemy, transform.position, transform.rotation);
+        Vector3 position = new Vector3(Random.Range(-spawnField.x, spawnField.x), Random.Range(-spawnField.y, spawnField.y), 0.0f);
+        GameObject newEnemy = Instantiate(_enemy, position, Quaternion.identity);
+        newEnemy.transform.parent = gameObject.transform;
+        float radius = Mathf.Sqrt(50f / Mathf.PI);
+        newEnemy.transform.localScale = new Vector3(radius, radius);
         Debug.Log("Spawning Enemy : " + _enemy.name);
     }
 }

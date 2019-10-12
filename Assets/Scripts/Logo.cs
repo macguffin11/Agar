@@ -15,7 +15,6 @@ public class Logo : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("OWWOWOWO");
         z += Time.deltaTime * speed;
         transform.rotation = Quaternion.Euler(0f, 0f, z);
     }

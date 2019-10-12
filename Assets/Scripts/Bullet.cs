@@ -52,6 +52,7 @@ public class Bullet : Utilities
             level.SpawnFood(10, other.gameObject.transform.position);
             Destroy(gameObject);
             other.GetComponent<EnemyController>().RemoveObject();
+            Destroy(other.gameObject);
         }
     }
 
