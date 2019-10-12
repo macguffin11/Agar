@@ -103,7 +103,7 @@ public class Level : Utilities
         print("Spawning food: " + amount);
         for (int i = 0; i < amount; i++)
         {
-            Vector3 position = new Vector3(Random.Range(pos.x - 2, pos.x + 2), Random.Range(pos.y - 2, pos.y + 2), 0.0f);
+            Vector3 position = new Vector3(Random.Range(pos.x - 0.1f, pos.x + 0.1f), Random.Range(pos.y - 0.1f, pos.y + 0.1f), 0.0f);
             GameObject newFood = Instantiate(foodPrefab, position, Quaternion.identity);
             newFood.transform.parent = gameObject.transform;
             newFood.transform.localScale = new Vector3(radius, radius);
