@@ -180,12 +180,12 @@ public class GameManager : Utilities
     /// <summary>
     /// Quit the game and save settings.
     /// </summary>
-    public void Quit()
+    public void QuitGame()
     {
         Save();
 
         Print("Quitting game", "event");
-
         Application.Quit();
+        Print("Quitting game2", "event");
     }
 }
