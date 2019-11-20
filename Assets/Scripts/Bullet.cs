@@ -47,10 +47,10 @@ public class Bullet : Utilities
     {
         if (other.gameObject.tag == "Enemy")
         {
-            //Print("Enemyyyyyyy");
+            Debug.Log("Enemyyyyyyy");
             level.SpawnFood(15, other.gameObject.transform.position);
             Destroy(gameObject);
-            other.GetComponent<EnemyController>().RemoveObject();
+            other.GetComponent<EnemyController>().EnemyDie();
             Destroy(other.gameObject);
         }
     }

@@ -139,7 +139,7 @@ public class Level : Utilities
     }
 
     /// <summary>
-    /// Spawn a certain amount of food instances.
+    /// Spawn a certain amount of Enemy instances.
     /// </summary>
     public void SpawnEnemy(int amount)
     {
