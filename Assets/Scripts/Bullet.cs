@@ -1,43 +1,48 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Bullet : Utilities
 {
-    private GameManager gameManager;
-    private Rigidbody2D rigidBody2D;
+    public Rigidbody2D rigidBody2D;
+    public CircleCollider2D circleCollider2D;
+    public Vector3 player;
+    public float dist;
+    public Vector3 cek;
+    private bool stop = false;
     private Level level;
-    public Vector2 temp;
-
-    // Use this for initialization
-    void Start ()
+    // Start is called before the first frame update
+    void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        rigidBody2D = GetComponent<Rigidbody2D>();
         level = FindObjectOfType<Level>();
-        //temp = rigidBody2D.velocity;
-
-        if (gameManager == null)
-        {
-            Print("No GameManager found!", "error");
-        }
         if (level == null)
         {
             Print("No Level found!", "error");
         }
+
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (new Vector2(Mathf.Round(temp.x * 1) / 1, Mathf.Round(temp.y * 1) / 1) != new Vector2(Mathf.Round(transform.position.x * 1) / 1, Mathf.Round(transform.position.y * 1) / 1))
+        if (!stop)
         {
-            Vector2 direction = (temp - new Vector2(transform.position.x, transform.position.y)).normalized;
-            rigidBody2D.velocity = direction * 10;
-            //rigidBody2D.velocity -= temp * 0.01f;
+            //rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.05f); 
+            /*cek = Vector3.Lerp(transform.position, endPos, 0.1f);
+            transform.position = cek;*/
+            if (Vector2.Distance(player, transform.position) >= dist)
+            {
+                rigidBody2D.velocity = Vector2.zero;
+                rigidBody2D.angularVelocity = 0f;
+                stop = true;
+                level.SpawnFood(1, transform.localScale.x, transform.position, 18);
+                Destroy(gameObject);
+            }
         }
         else
         {
             rigidBody2D.velocity = Vector2.zero;
+            rigidBody2D.angularVelocity = 0f;
             level.SpawnFood(1, transform.localScale.x, transform.position, 18);
             Destroy(gameObject);
         }
@@ -48,16 +53,18 @@ public class Bullet : Utilities
         if (other.gameObject.tag == "Enemy")
         {
             //Print("Enemyyyyyyy");
-            level.SpawnFood(15, other.gameObject.transform.position);
-            Destroy(gameObject);
-            other.GetComponent<EnemyController>().RemoveObject();
+            level.SpawnFood(18, other.gameObject.transform.position);
+            other.GetComponent<EnemyController>().EnemyDie();
             Destroy(other.gameObject);
+            Destroy(gameObject);
         }
-    }
-
-    public void RemoveObject()
-    {
-        level.food.Remove(gameObject);
-        Destroy(gameObject);
+        else if (other.gameObject.tag == "Level")
+        {
+            circleCollider2D.enabled = true;
+        }
+        else
+        {
+            circleCollider2D.enabled = false;
+        }
     }
 }

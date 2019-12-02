@@ -47,8 +47,9 @@ public class Shooting : Utilities
         {
             GameObject bullet = Instantiate(bulletPrefab, cursor.startPoint.position, cursor.startPoint.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            bullet.GetComponent<Bullet>().player = cursor.startPoint.position;
             rb.AddForce(cursor.startPoint.up * bulletSpeed, ForceMode2D.Impulse);
-            //bullet.GetComponent<Food>().endPosition = transform.position + cursor.endPoint.position;
+            bullet.GetComponent<Bullet>().dist = Vector2.Distance(cursor.startPoint.position, cursor.endPoint.position);
         }
         else
         {

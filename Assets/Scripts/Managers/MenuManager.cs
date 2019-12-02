@@ -10,10 +10,9 @@ public class MenuManager : Utilities
 {
     public GameObject pausePanel;
     public GameObject controllPanel;
-    public bool showFrameRate = true;
+    public bool showFrameRate = false;
     public TextMeshProUGUI inputName;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI highscoreText;
     public TextMeshProUGUI elapsedTimeText;
     public string buttonHover = "ButtonHover";
     public string buttonPress = "ButtonPress";
@@ -83,7 +82,6 @@ public class MenuManager : Utilities
     {
         Print("Quitting game", "event");
         Application.Quit();
-        Print("Quitting game2", "event");
     }
 
     /// <summary>

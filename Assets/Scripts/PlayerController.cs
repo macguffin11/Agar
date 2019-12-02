@@ -16,6 +16,7 @@ public class PlayerController : Utilities
     public string eatSound = "EatSound";
     public string spawnSound = "SpawnSound";
     public string mergeSound = "MergeSound";
+    public string asdasd;
     private float massEject;
 
     public Rigidbody2D rigidBody2D;
@@ -42,6 +43,8 @@ public class PlayerController : Utilities
         {
             Print("No AudioManager found!", "error");
         }
+        asdasd = gameManager.inputName; 
+        inputName.SetText(gameManager.inputName);
     }
 
     // FixedUpdate is used for physics
@@ -50,6 +53,7 @@ public class PlayerController : Utilities
         /*mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - transform.position).normalized;*/
         //mobile
+        Debug.Log(gameManager.inputName);
         mousePosition = joystick.Direction;
         direction = Vector2.ClampMagnitude(mousePosition, 0.4f);
         rigidBody2D.MovePosition(rigidBody2D.position + (direction/(transform.localScale.x/2)) * movementSpeed * Time.fixedDeltaTime);

@@ -5,9 +5,8 @@ public class Food : Utilities
 {
     private GameManager gameManager;
     private Level level;
-    private bool stop = false;
 
-    public Rigidbody2D rigidBody2D;
+    public CircleCollider2D circleCollider2D2;
     public Vector2 endPosition;
     public int score = 1;
 
@@ -42,31 +41,6 @@ public class Food : Utilities
 	// Update is called once per frame
 	void LateUpdate ()
     {
-        /*if (transform.position.x >= endPosition.x)
-        {
-            rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.5f);
-            stop = true;
-        }
-        else
-        {
-            if (rigidBody2D.velocity != Vector2.zero && stop)
-            {
-                rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.5f);
-            }
-        }*/
-        if (!stop)
-        {
-            rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.05f);
-            if (rigidBody2D.velocity == Vector2.zero)
-            {
-                stop = true;
-            }
-        }
-        else
-        {
-            rigidBody2D.velocity = Vector2.zero;
-            rigidBody2D.angularVelocity = 0f;
-        }
     }
 
     public void RemoveObject()

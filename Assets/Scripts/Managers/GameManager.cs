@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,8 +14,10 @@ public class GameManager : Utilities
     public int currentScore = 10;
     public int currentHighScore = 0;
     public string backgroundMusic = "BackgroundMusic";
+    public string inputName;
 
     private AudioManager audioManager;
+    private MenuManager menuManager;
     private Camera mainCamera;
     private Level level;
 
@@ -36,6 +39,11 @@ public class GameManager : Utilities
     {
         audioManager = FindObjectOfType<AudioManager>();
         if (audioManager == null)
+        {
+            Print("No AudioManager found!", "error");
+        }
+        menuManager = FindObjectOfType<MenuManager>();
+        if (menuManager == null)
         {
             Print("No AudioManager found!", "error");
         }
@@ -79,6 +87,12 @@ public class GameManager : Utilities
         Print("Changing state", "event");
 
         currentState = state;
+    }
+
+    public void SaveState()
+    {
+        //inputName.text = menuManager.inputName.text;
+        inputName = "asdasdasdasd";
     }
 
     /// <summary>
