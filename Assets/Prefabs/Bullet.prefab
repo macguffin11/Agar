@@ -187,9 +187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a64d2307e4c1e4c84101ed6c8c4280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 4787382565853532458, guid: 7021db18da31ee64fbcc1b9d6504183b,
+    type: 3}
   rigidBody2D: {fileID: 4036601973449142314}
   circleCollider2D: {fileID: 8539477375006579405}
-  endPos: {x: 0, y: 0, z: 0}
+  player: {x: 0, y: 0, z: 0}
+  dist: 0
   cek: {x: 0, y: 0, z: 0}
 --- !u!1 &2192263091111946769
 GameObject:

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : Utilities
 {
+    public GameObject Explosion;
     public Rigidbody2D rigidBody2D;
     public CircleCollider2D circleCollider2D;
     public Vector3 player;
@@ -53,6 +54,7 @@ public class Bullet : Utilities
         if (other.gameObject.tag == "Enemy")
         {
             //Print("Enemyyyyyyy");
+            ExplosionEffect();
             level.SpawnFood(18, other.gameObject.transform.position);
             other.GetComponent<EnemyController>().EnemyDie();
             Destroy(other.gameObject);
@@ -66,5 +68,11 @@ public class Bullet : Utilities
         {
             circleCollider2D.enabled = false;
         }
+    }
+
+    public void ExplosionEffect()
+    {
+        GameObject clone;
+        clone = Instantiate(Explosion, transform.position, transform.rotation) as GameObject;
     }
 }
