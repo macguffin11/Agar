@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8f3df67f02814498d565c2ea71a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 4787382565853532458, guid: 7021db18da31ee64fbcc1b9d6504183b,
+    type: 3}
   speed: 5
   speedmovement: 45
   timeBeforeDash: 1.5
