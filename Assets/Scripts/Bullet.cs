@@ -28,10 +28,13 @@ public class Bullet : Utilities
     {
         if (!stop)
         {
-            //rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.05f); 
             /*cek = Vector3.Lerp(transform.position, endPos, 0.1f);
             transform.position = cek;*/
             if (Vector2.Distance(player, transform.position) >= dist)
+            {
+                rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.125f);
+            }
+            if (rigidBody2D.velocity == Vector2.zero)
             {
                 rigidBody2D.velocity = Vector2.zero;
                 rigidBody2D.angularVelocity = 0f;

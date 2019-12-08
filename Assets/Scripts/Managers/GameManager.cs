@@ -28,10 +28,6 @@ public class GameManager : Utilities
         {
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
     // Use this for initialization
@@ -87,12 +83,6 @@ public class GameManager : Utilities
         Print("Changing state", "event");
 
         currentState = state;
-    }
-
-    public void SaveState()
-    {
-        //inputName.text = menuManager.inputName.text;
-        inputName = "asdasdasdasd";
     }
 
     /// <summary>

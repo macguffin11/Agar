@@ -16,7 +16,7 @@ public class PlayerController : Utilities
     public string eatSound = "EatSound";
     public string spawnSound = "SpawnSound";
     public string mergeSound = "MergeSound";
-    public string asdasd;
+    public float asdasd;
     private float massEject;
 
     public Rigidbody2D rigidBody2D;
@@ -43,7 +43,7 @@ public class PlayerController : Utilities
         {
             Print("No AudioManager found!", "error");
         }
-        asdasd = gameManager.inputName; 
+        asdasd = gameManager.elapsedTime; 
         inputName.SetText(gameManager.inputName);
     }
 
@@ -53,7 +53,6 @@ public class PlayerController : Utilities
         /*mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - transform.position).normalized;*/
         //mobile
-        Debug.Log(gameManager.inputName);
         mousePosition = joystick.Direction;
         direction = Vector2.ClampMagnitude(mousePosition, 0.4f);
         rigidBody2D.MovePosition(rigidBody2D.position + (direction/(transform.localScale.x/2)) * movementSpeed * Time.fixedDeltaTime);
@@ -90,16 +89,6 @@ public class PlayerController : Utilities
             transform.localScale = new Vector3(increase, increase);
             gameManager.ChangeScore(other.GetComponent<Food>().score);
             other.GetComponent<Food>().RemoveObject();
-        }
-        else if (other.gameObject.tag == "SplitMass" && other.GetComponent<SplitMassController>().splitTime >= 10f)
-        {
-            Print("Collided with mass", "log");
-            audioManager.PlaySound(mergeSound);
-            float radPlayer = transform.localScale.x;
-            float sum = Mathf.PI * radPlayer * radPlayer + Mathf.PI * other.gameObject.transform.localScale.x * other.gameObject.transform.localScale.y;
-            radPlayer = Mathf.Sqrt(sum / Mathf.PI);
-            transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-            Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "Enemy")
         {
