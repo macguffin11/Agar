@@ -43,9 +43,18 @@ public class Shooting : Utilities
 
     public void Shoot()
     {
-        if (transform.localScale.x >= 0f)
+        if (transform.localScale.x >= massEject)
         {
+            // mengurangi massa player
+            audioManager.PlaySound("MergeSound");
+            float radPlayer = transform.localScale.x;
+            float diff = (Mathf.PI * radPlayer * radPlayer) - 18f;
+            radPlayer = Mathf.Sqrt(diff / Mathf.PI);
+            transform.localScale = new Vector3(radPlayer, radPlayer, 0);
+            gameManager.ChangeScore(-18);
+            // membuat bullet
             GameObject bullet = Instantiate(bulletPrefab, cursor.startPoint.position, cursor.startPoint.rotation);
+            bullet.transform.localScale = sizeShoot;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Bullet>().player = cursor.startPoint.position;
             rb.AddForce(cursor.startPoint.up * bulletSpeed, ForceMode2D.Impulse);

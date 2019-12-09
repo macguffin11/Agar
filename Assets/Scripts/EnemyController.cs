@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class EnemyController : Utilities
 {
-    public Rigidbody Explosion;
     public float speed = 1f;
     public float speedmovement;
     public float timeBeforeDash;
@@ -69,14 +68,9 @@ public class EnemyController : Utilities
 
     public void EnemyDie()
     {
+        
         Destroy(gameObject);
-        ExplosionEffect();
     }
 
-    public void ExplosionEffect()
-    {
-        Rigidbody clone;
-        clone = Instantiate(Explosion, transform.position, transform.rotation) as Rigidbody;
-        clone.velocity = transform.TransformDirection(Vector3.forward * 10);
-    }
+    
 }

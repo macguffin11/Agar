@@ -66,6 +66,8 @@ public class MenuManager : Utilities
     public void PlayScene()
     {
         Debug.Log("Play!");
+        //gameManager.SaveState();
+        gameManager.inputName = inputName.text;
         SceneManager.LoadScene("Game-Start", LoadSceneMode.Single);
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : Utilities
 {
+    public GameObject Explosion;
     public Rigidbody2D rigidBody2D;
     public CircleCollider2D circleCollider2D;
     public Vector3 player;
@@ -27,10 +28,13 @@ public class Bullet : Utilities
     {
         if (!stop)
         {
-            //rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.05f); 
             /*cek = Vector3.Lerp(transform.position, endPos, 0.1f);
             transform.position = cek;*/
             if (Vector2.Distance(player, transform.position) >= dist)
+            {
+                rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.125f);
+            }
+            if (rigidBody2D.velocity == Vector2.zero)
             {
                 rigidBody2D.velocity = Vector2.zero;
                 rigidBody2D.angularVelocity = 0f;
@@ -53,6 +57,7 @@ public class Bullet : Utilities
         if (other.gameObject.tag == "Enemy")
         {
             //Print("Enemyyyyyyy");
+            ExplosionEffect();
             level.SpawnFood(18, other.gameObject.transform.position);
             other.GetComponent<EnemyController>().EnemyDie();
             Destroy(other.gameObject);
@@ -66,5 +71,11 @@ public class Bullet : Utilities
         {
             circleCollider2D.enabled = false;
         }
+    }
+
+    public void ExplosionEffect()
+    {
+        GameObject clone;
+        clone = Instantiate(Explosion, transform.position, transform.rotation) as GameObject;
     }
 }

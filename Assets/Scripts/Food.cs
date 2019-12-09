@@ -6,8 +6,6 @@ public class Food : Utilities
     private GameManager gameManager;
     private Level level;
 
-    public CircleCollider2D circleCollider2D2;
-    public Vector2 endPosition;
     public int score = 1;
 
     // Use this for initialization

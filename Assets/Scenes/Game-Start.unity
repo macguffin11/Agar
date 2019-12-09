@@ -525,7 +525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &339086123
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1616,9 +1616,7 @@ MonoBehaviour:
   borderThickness: 10
   foodPrefab: {fileID: 1140520465745808362, guid: 78f99353a75a09e46b07d7b9ffa39abe,
     type: 3}
-  enemyPrefab: {fileID: 0}
   food: []
-  enemy: []
   spawnInterval: 3
   initialFoodAmount: 500
 --- !u!4 &968214639
@@ -3142,6 +3140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 7671268743825826565, guid: 3c376683dc6ed164fb5392c9fcded24c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6169891972742695354, guid: 3c376683dc6ed164fb5392c9fcded24c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3660,7 +3663,11 @@ MonoBehaviour:
   eatSound: EatSound
   spawnSound: SpawnSound
   mergeSound: MergeSound
+<<<<<<< HEAD
   asdasd: 
+=======
+  asdasd: 0
+>>>>>>> b4e5f8d4fd7878b442e6b4fcb7ac5c76b0099a43
   rigidBody2D: {fileID: 2124268016}
 --- !u!4 &2124268015
 Transform:

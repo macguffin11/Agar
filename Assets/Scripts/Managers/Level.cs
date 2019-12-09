@@ -7,11 +7,7 @@ public class Level : Utilities
     public Vector2 spawnField;
     public float borderThickness = 10.0f;
     public GameObject foodPrefab;
-    public GameObject enemyPrefab;
-    //public GameObject tilePrefab;
-    //public List<GameObject> tiles = new List<GameObject>();
     public List<GameObject> food = new List<GameObject>();
-    public List<GameObject> enemy = new List<GameObject>();
     public float spawnInterval = 5.0f;
     public int initialFoodAmount = 100;
     
@@ -23,7 +19,6 @@ public class Level : Utilities
     private BoxCollider2D leftCollider;
     private float accumulator;
     private int maxFood = 100;
-    private int maxEnemy = 20;
     private float spriteWidth;
     private float spriteHeight;
     private int tileCount;
@@ -85,11 +80,6 @@ public class Level : Utilities
                     SpawnFood(10);
                 }
 
-                /*if (enemy.Count < maxEnemy)
-                {
-                    SpawnEnemy(10);
-                }*/
-
                 accumulator = 0;
             }
 
@@ -135,23 +125,6 @@ public class Level : Utilities
             newFood.transform.parent = gameObject.transform;
             newFood.transform.localScale = new Vector3(radius, radius);
             food.Add(newFood);
-        }
-    }
-
-    /// <summary>
-    /// Spawn a certain amount of food instances.
-    /// </summary>
-    public void SpawnEnemy(int amount)
-    {
-        print("Spawning enemy: " + amount);
-        for (int i = 0; i < amount; i++)
-        {
-            Vector3 position = new Vector3(Random.Range(-spawnField.x, spawnField.x), Random.Range(-spawnField.y, spawnField.y), 0.0f);
-            GameObject newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-            newEnemy.transform.parent = gameObject.transform;
-            float radius = Mathf.Sqrt(50f / Mathf.PI);
-            newEnemy.transform.localScale = new Vector3(radius, radius);
-            enemy.Add(newEnemy);
         }
     }
 
