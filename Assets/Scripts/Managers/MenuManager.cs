@@ -10,14 +10,17 @@ public class MenuManager : Utilities
 {
     public GameObject pausePanel;
     public GameObject controllPanel;
+    public GameObject playerName;
     public bool showFrameRate = false;
     public TextMeshProUGUI inputName;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI elapsedTimeText;
     public string buttonHover = "ButtonHover";
     public string buttonPress = "ButtonPress";
+    public string backgroundMusic = "BackgroundMusic";
 
     private GameManager gameManager;
+    private AudioManager audioManager;
     private ImageFader imgFad;
 
     // Use this for initialization
@@ -25,6 +28,11 @@ public class MenuManager : Utilities
     {
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager == null)
+        {
+            Print("No AudioManager found!", "error");
+        }
+        audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager == null)
         {
             Print("No AudioManager found!", "error");
         }
@@ -53,8 +61,19 @@ public class MenuManager : Utilities
             }
 
             //elapsedTimeText.text = gameManager.playTime.ToString("F1");
-            scoreText.text = "SCORE: " + gameManager.currentScore;
+            if (SceneManager.GetSceneByName("Game-Start") == SceneManager.GetActiveScene())
+            {
+                scoreText.text = "SCORE: " + gameManager.currentScore;
+            }
             //highscoreText.text = "HIGH SCORE: " + gameManager.currentHighScore;
+        }
+
+        //string myString = "myText";
+        if (SceneManager.GetSceneByName("Entry-Name") == SceneManager.GetActiveScene() && inputName.text.Length > 10)
+        {
+            string name = inputName.text;
+            name = name.Substring(0, 10);
+            inputName.SetText(name);
         }
     }
 
@@ -77,6 +96,12 @@ public class MenuManager : Utilities
         SceneManager.LoadScene("Main-Menu", LoadSceneMode.Single);
     }
 
+    public void GameOverScene()
+    {
+        Debug.Log("Game-Over!");
+        SceneManager.LoadScene("Game-Over", LoadSceneMode.Single);
+    }
+
     /// <summary>
     /// Quit the game and save settings.
     /// </summary>
@@ -84,6 +109,28 @@ public class MenuManager : Utilities
     {
         Print("Quitting game", "event");
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Pause the game.
+    /// </summary>
+    public void Pause()
+    {
+        Print("Pausing game", "event");
+
+        gameManager.currentState = GameManager.State.Paused;
+        audioManager.PauseSound(backgroundMusic);
+        Time.timeScale = 0;
+    }
+
+    /// <summary>
+    /// Proceed gameplay.
+    /// </summary>
+    public void Resume()
+    {
+        gameManager.currentState = GameManager.State.Playing;
+        audioManager.ResumeSound(backgroundMusic);
+        Time.timeScale = 1.0f;
     }
 
     /// <summary>
@@ -95,13 +142,15 @@ public class MenuManager : Utilities
         {
             TogglePanel(pausePanel);
             TogglePanel(controllPanel);
-            gameManager.Pause();
+            TogglePanel(playerName);
+            Pause();
         }
         else
         {
             TogglePanel(pausePanel);
             TogglePanel(controllPanel);
-            gameManager.Resume();
+            TogglePanel(playerName);
+            Resume();
         }
     }
 

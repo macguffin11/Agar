@@ -13,10 +13,8 @@ public class GameManager : Utilities
     public float playTime = 0.0f;
     public int currentScore = 10;
     public int currentHighScore = 0;
-    public string backgroundMusic = "BackgroundMusic";
     public string inputName;
 
-    private AudioManager audioManager;
     private MenuManager menuManager;
     private Camera mainCamera;
     private Level level;
@@ -33,11 +31,6 @@ public class GameManager : Utilities
     // Use this for initialization
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
-        if (audioManager == null)
-        {
-            Print("No AudioManager found!", "error");
-        }
         menuManager = FindObjectOfType<MenuManager>();
         if (menuManager == null)
         {
@@ -93,28 +86,6 @@ public class GameManager : Utilities
         Print("Preparing level", "event");
 
         currentState = State.Preparing;
-    }
-
-    /// <summary>
-    /// Pause the game.
-    /// </summary>
-    public void Pause()
-    {
-        Print("Pausing game", "event");
-
-        currentState = State.Paused;
-        audioManager.PauseSound(backgroundMusic);
-        Time.timeScale = 0;
-    }
-
-    /// <summary>
-    /// Proceed gameplay.
-    /// </summary>
-    public void Resume()
-    {
-        currentState = State.Playing;
-        audioManager.ResumeSound(backgroundMusic);
-        Time.timeScale = 1.0f;
     }
 
     /// <summary>
