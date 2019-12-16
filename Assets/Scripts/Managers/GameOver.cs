@@ -41,6 +41,7 @@ public class GameOver : MonoBehaviour
 
 	void LoadMainMenu(float delay = 0)
 	{
+		gameManager.Reset();
 		StartCoroutine(LoadSceneDelayCo("Main-Menu", delay));
 	}
 }

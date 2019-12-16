@@ -92,6 +92,7 @@ public class GameManager : Utilities
     /// </summary>
     public void Reset()
     {
+        inputName = null;
         currentScore = 10;
         playTime = 0.0f;
         elapsedTime = 0.0f;

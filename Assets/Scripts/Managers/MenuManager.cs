@@ -68,12 +68,15 @@ public class MenuManager : Utilities
         }
 
         //string myString = "myText";
-        if (SceneManager.GetSceneByName("Entry-Name") == SceneManager.GetActiveScene() && inputName.text.Length > 10)
+        if (SceneManager.GetSceneByName("Entry-Name") == SceneManager.GetActiveScene())
         {
-            string name = inputName.text;
-            name = name.Substring(0, 10);
-            inputName.SetText(name);
             gameManager.inputName = inputName.text;
+            if (inputName.text.Length > 10)
+            {
+                string name = inputName.text;
+                name = name.Substring(0, 10);
+                inputName.SetText(name);
+            }
         }
     }
 

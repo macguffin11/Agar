@@ -19,7 +19,7 @@ public class Level : Utilities
     // Awake is always called before any Start functions
     void Awake()
     {
-        Time.timeScale = 1.0f;
+        
     }
 
     // Use this for initialization
@@ -39,10 +39,7 @@ public class Level : Utilities
 
         Print("Preparing game", "event");
         gameManager.currentState = GameManager.State.Preparing;
-        gameManager.Reset();
-        audioManager.PlaySound(backgroundMusic);
-        SpawnFood(initialFoodAmount);
-        gameManager.currentState = GameManager.State.Playing;
+
 
         Debug.Log("Play Game");
     }
@@ -64,6 +61,14 @@ public class Level : Utilities
 
             accumulator += Time.deltaTime;
         }
+        else if (gameManager.currentState == GameManager.State.Preparing)
+        {
+            gameManager.Reset();
+            audioManager.PlaySound(backgroundMusic);
+            Time.timeScale = 1.0f;
+            SpawnFood(initialFoodAmount);
+            gameManager.currentState = GameManager.State.Playing;
+        }
     }
 
     /// <summary>
@@ -74,7 +79,7 @@ public class Level : Utilities
         print("Spawning food: " + amount);
         for (int i = 0; i < amount; i++)
         {
-            Vector3 position = new Vector3(Random.Range(-71f, 71f), Random.Range(-40f, 40f), 0.0f);
+            Vector3 position = new Vector3(Random.Range(-68f, 68f), Random.Range(-37f, 37f), 0.0f);
             GameObject newFood = Instantiate(foodPrefab, position, Quaternion.identity);
             newFood.transform.parent = gameObject.transform;
             newFood.transform.localScale = new Vector3(radius, radius);
