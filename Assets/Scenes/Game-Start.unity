@@ -4227,12 +4227,18 @@ MonoBehaviour:
   spawnSound: SpawnSound
   mergeSound: MergeSound
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 0f02557dc1b45f68fc8ae54f8e8a21a94269eb38
   asdasd: 
 =======
   asdasd: 0
 >>>>>>> b4e5f8d4fd7878b442e6b4fcb7ac5c76b0099a43
+<<<<<<< HEAD
+>>>>>>> 0f02557dc1b45f68fc8ae54f8e8a21a94269eb38
+=======
 >>>>>>> 0f02557dc1b45f68fc8ae54f8e8a21a94269eb38
   rigidBody2D: {fileID: 2124268016}
 --- !u!4 &2124268015
