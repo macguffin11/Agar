@@ -16,7 +16,7 @@ public class PlayerController : Utilities
     public string eatSound = "EatSound";
     public string spawnSound = "SpawnSound";
     public string mergeSound = "MergeSound";
-    public float asdasd;
+    private float rad;
     private float massEject;
 
     public Rigidbody2D rigidBody2D;
@@ -31,7 +31,7 @@ public class PlayerController : Utilities
         menuManager = FindObjectOfType<MenuManager>();
         audioManager = FindObjectOfType<AudioManager>();
         massEject = Mathf.Sqrt(35f / Mathf.PI);
-        float rad = Mathf.Sqrt(10f / Mathf.PI);
+        rad = Mathf.Sqrt(10f / Mathf.PI);
         transform.localScale = new Vector3(rad, rad, 1);
         //inputName.text = menuManager.inputName.text;
 
@@ -43,7 +43,6 @@ public class PlayerController : Utilities
         {
             Print("No AudioManager found!", "error");
         }
-        asdasd = gameManager.elapsedTime; 
         inputName.SetText(gameManager.inputName);
     }
 
@@ -56,11 +55,7 @@ public class PlayerController : Utilities
         mousePosition = joystick.Direction;
         direction = Vector2.ClampMagnitude(mousePosition, 0.4f);
         rigidBody2D.MovePosition(rigidBody2D.position + (direction/(transform.localScale.x/2)) * movementSpeed * Time.fixedDeltaTime);
-    }
 
-    // Update is called once per frame
-    private void Update()
-    {
         if (Input.touchCount > 0)
         {
             cursor.SetActive(true);
@@ -70,10 +65,16 @@ public class PlayerController : Utilities
             cursor.SetActive(false);
         }
 
-        if (gameManager.currentScore <= 0)
+        if (transform.localScale.x < rad)
         {
-            Destroy(gameObject);
+            transform.localScale = new Vector3(rad, rad, 1);
         }
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -647,14 +647,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4433313036286188804}
-        m_MethodName: EntryScene
-        m_Mode: 1
+        m_MethodName: MoveScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Entry-Name
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 452456136}
@@ -2053,11 +2053,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 742389041487584359, guid: 0f6ca0e2e7bd4654faf28ebd530e5366,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 742389041487584359, guid: 0f6ca0e2e7bd4654faf28ebd530e5366,
-        type: 3}
       propertyPath: showFrameRate
       value: 0
       objectReference: {fileID: 0}
@@ -2196,11 +2191,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8309416569564213195, guid: 8111a5be95a0ff04897d8c686303588d,
-        type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8111a5be95a0ff04897d8c686303588d, type: 3}

@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Utilities
 {
     public enum State { Menu, Preparing, Playing, Paused };
-    
     public State currentState;
     public float elapsedTime = 0.0f;
     public float playTime = 0.0f;

@@ -9,7 +9,6 @@ public class Bullet : Utilities
     public CircleCollider2D circleCollider2D;
     public Vector3 player;
     public float dist;
-    public Vector3 cek;
     private bool stop = false;
     private Level level;
     // Start is called before the first frame update
@@ -20,7 +19,6 @@ public class Bullet : Utilities
         {
             Print("No Level found!", "error");
         }
-
     }
 
     // Update is called once per frame
@@ -28,8 +26,6 @@ public class Bullet : Utilities
     {
         if (!stop)
         {
-            /*cek = Vector3.Lerp(transform.position, endPos, 0.1f);
-            transform.position = cek;*/
             if (Vector2.Distance(player, transform.position) >= dist)
             {
                 rigidBody2D.velocity = Vector2.Lerp(rigidBody2D.velocity, Vector2.zero, 0.125f);
@@ -56,7 +52,6 @@ public class Bullet : Utilities
     {
         if (other.gameObject.tag == "Enemy")
         {
-            //Print("Enemyyyyyyy");
             ExplosionEffect();
             level.SpawnFood(18, other.gameObject.transform.position);
             other.GetComponent<EnemyController>().EnemyDie();

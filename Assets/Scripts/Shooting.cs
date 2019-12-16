@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 public class Shooting : Utilities
 {
     public GameObject bulletPrefab;
@@ -52,17 +52,21 @@ public class Shooting : Utilities
             radPlayer = Mathf.Sqrt(diff / Mathf.PI);
             transform.localScale = new Vector3(radPlayer, radPlayer, 0);
             gameManager.ChangeScore(-18);
-            // membuat bullet
-            GameObject bullet = Instantiate(bulletPrefab, cursor.startPoint.position, cursor.startPoint.rotation);
-            bullet.transform.localScale = sizeShoot;
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            bullet.GetComponent<Bullet>().player = cursor.startPoint.position;
-            rb.AddForce(cursor.startPoint.up * bulletSpeed, ForceMode2D.Impulse);
-            bullet.GetComponent<Bullet>().dist = Vector2.Distance(cursor.startPoint.position, cursor.endPoint.position);
+            GenerateBullet();
         }
         else
         {
             Print("Can't shoot mass!", "log");
         }
+    }
+
+    public void GenerateBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, cursor.startPoint.position, cursor.startPoint.rotation);
+        bullet.transform.localScale = sizeShoot;
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        bullet.GetComponent<Bullet>().player = cursor.startPoint.position;
+        rb.AddForce(cursor.startPoint.up * bulletSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<Bullet>().dist = Vector2.Distance(cursor.startPoint.position, cursor.endPoint.position);
     }
 }

@@ -10,7 +10,7 @@ public class Food : Utilities
 
     // Use this for initialization
     void Start ()
-    {
+    { 
         gameManager = FindObjectOfType<GameManager>();
         level = FindObjectOfType<Level>();
 
@@ -22,7 +22,11 @@ public class Food : Utilities
         {
             Print("No Level found!", "error");
         }
-
+    }
+	
+	// Update is called once per frame
+	void LateUpdate ()
+    {
         /*int foodScore = gameManager.currentScore;
         if (foodScore < 500)
         {
@@ -34,11 +38,6 @@ public class Food : Utilities
         {
             transform.localScale += new Vector3(0.4f, 0.4f, 0f);
         }*/
-    }
-	
-	// Update is called once per frame
-	void LateUpdate ()
-    {
     }
 
     public void RemoveObject()

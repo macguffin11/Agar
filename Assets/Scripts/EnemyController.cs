@@ -12,7 +12,7 @@ public class EnemyController : Utilities
     private GameManager gameManager;
     public float Area;
     private Vector2 targetMeluncur;
-
+    
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -54,17 +54,6 @@ public class EnemyController : Utilities
         }
 
     }
-
-    /*void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            Print("Tertembak");
-            Destroy(gameObject);
-            other.GetComponent<EnemyController>().RemoveObject();
-        }
-
-    }*/
 
     public void EnemyDie()
     {

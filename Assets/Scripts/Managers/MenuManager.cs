@@ -5,10 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Text;
 using TMPro;
-
 public class MenuManager : Utilities
 {
-    public GameObject pausePanel;
+    public GameObject pausePanel; 
     public GameObject controllPanel;
     public GameObject playerName;
     public bool showFrameRate = false;
@@ -74,26 +73,13 @@ public class MenuManager : Utilities
             string name = inputName.text;
             name = name.Substring(0, 10);
             inputName.SetText(name);
+            gameManager.inputName = inputName.text;
         }
     }
 
-    public void EntryScene()
+    public void MoveScene(string scene)
     {
-        SceneManager.LoadScene("Entry-Name", LoadSceneMode.Single);
-    }
-
-    public void PlayScene()
-    {
-        Debug.Log("Play!");
-        //gameManager.SaveState();
-        gameManager.inputName = inputName.text;
-        SceneManager.LoadScene("Game-Start", LoadSceneMode.Single);
-    }
-
-    public void MenuScene()
-    {
-        Debug.Log("Menu!");
-        SceneManager.LoadScene("Main-Menu", LoadSceneMode.Single);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     public void GameOverScene()
@@ -140,17 +126,17 @@ public class MenuManager : Utilities
     {
         if (gameManager.currentState == GameManager.State.Playing)
         {
+            Pause();
             TogglePanel(pausePanel);
             TogglePanel(controllPanel);
             TogglePanel(playerName);
-            Pause();
         }
         else
         {
+            Resume();
             TogglePanel(pausePanel);
             TogglePanel(controllPanel);
             TogglePanel(playerName);
-            Resume();
         }
     }
 

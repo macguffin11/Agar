@@ -19,9 +19,8 @@ public class SmoothFollow2DCamera : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        //curScale = target.localScale.x;
     }
-
+     
     // Update is called once per frame
     void LateUpdate()
     {
@@ -29,10 +28,6 @@ public class SmoothFollow2DCamera : MonoBehaviour
         target.localScale = new Vector3(radius, radius);
         int height = Mathf.RoundToInt ((zoom - radius) * (Screen.height / (float)Screen.width));
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, height / (100f / radius), 0.025f);
-
-        //Vector3 position = target.position;
-        //smoothedPosition = Vector3.Lerp(transform.position, position, smoothSpeed);
         transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
-        //transform.LookAt(target);
     }
 }
