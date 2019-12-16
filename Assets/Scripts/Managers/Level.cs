@@ -10,8 +10,10 @@ public class Level : Utilities
     public List<GameObject> food = new List<GameObject>();
     public float spawnInterval = 5.0f;
     public int initialFoodAmount = 100;
-    
+    public string backgroundMusic = "BackgroundMusic";
+
     private GameManager gameManager;
+    private AudioManager audioManager;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D upCollider;
     private BoxCollider2D downCollider;
@@ -33,6 +35,11 @@ public class Level : Utilities
     // Use this for initialization
     void Start ()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager == null)
+        {
+            Print("No AudioManager found!", "error");
+        }
         gameManager = FindObjectOfType<GameManager>();
         upCollider = gameObject.AddComponent<BoxCollider2D>();
         upCollider.offset = new Vector2(0.0f, spawnField.y);
@@ -61,9 +68,9 @@ public class Level : Utilities
     public void Play()
     {
         Print("Preparing game", "event");
-
         gameManager.currentState = GameManager.State.Preparing;
         gameManager.Reset();
+        audioManager.PlaySound(backgroundMusic);
         PrepareLevel();
         gameManager.currentState = GameManager.State.Playing;
     }

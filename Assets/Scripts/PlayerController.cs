@@ -7,7 +7,7 @@ public class PlayerController : Utilities
 {
     public Joystick joystick;
     public TextMeshProUGUI inputName;
-    private float movementSpeed = 20f;
+    public float movementSpeed = 20f;
     private float increase;
     private Vector2 direction; 
     public Vector3 mousePosition;
@@ -61,14 +61,14 @@ public class PlayerController : Utilities
     // Update is called once per frame
     private void Update()
     {
-        /*if (Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             cursor.SetActive(true);
         }
         else
         {
             cursor.SetActive(false);
-        }*/
+        }
 
         if (gameManager.currentScore <= 0)
         {
@@ -90,7 +90,8 @@ public class PlayerController : Utilities
             gameManager.ChangeScore(other.GetComponent<Food>().score);
             other.GetComponent<Food>().RemoveObject();
         }
-        else if (other.gameObject.tag == "Enemy")
+        
+        if (other.gameObject.tag == "Enemy")
         {
             float radPlayer = transform.localScale.x;
             float diff = (Mathf.PI * radPlayer * radPlayer) - 5f;

@@ -63,9 +63,11 @@ public class Bullet : Utilities
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-        else if (other.gameObject.tag == "Level")
+        
+        if (other.gameObject.tag == "Level")
         {
             circleCollider2D.enabled = true;
+            Print(circleCollider2D.enabled.ToString(), "event");
         }
         else
         {
