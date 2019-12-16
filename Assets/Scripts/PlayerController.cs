@@ -83,11 +83,11 @@ public class PlayerController : Utilities
         {
             Print("Ate food", "log");
             audioManager.PlaySound(eatSound);
-            float radPlayer = transform.localScale.x;
+            /*float radPlayer = transform.localScale.x;
             float radFood = other.GetComponent<Food>().transform.localScale.x;
             float sum = Mathf.PI * radPlayer * radPlayer + Mathf.PI * radFood * radFood;
             increase = Mathf.Sqrt(sum / Mathf.PI);
-            transform.localScale = new Vector3(increase, increase);
+            transform.localScale = new Vector3(increase, increase);*/
             gameManager.ChangeScore(other.GetComponent<Food>().score);
             other.GetComponent<Food>().RemoveObject();
         }
@@ -103,10 +103,10 @@ public class PlayerController : Utilities
         }
         else if (other.gameObject.tag == "Enemy")
         {
-            float radPlayer = transform.localScale.x;
+           /* float radPlayer = transform.localScale.x;
             float diff = (Mathf.PI * radPlayer * radPlayer) - 5f;
             radPlayer = Mathf.Sqrt(diff / Mathf.PI);
-            transform.localScale = new Vector3(radPlayer, radPlayer, 0);
+            transform.localScale = new Vector3(radPlayer, radPlayer, 0);*/
             gameManager.ChangeScore(-5);
         }
     }
