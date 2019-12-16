@@ -4226,6 +4226,14 @@ MonoBehaviour:
   eatSound: EatSound
   spawnSound: SpawnSound
   mergeSound: MergeSound
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  asdasd: 
+=======
+  asdasd: 0
+>>>>>>> b4e5f8d4fd7878b442e6b4fcb7ac5c76b0099a43
+>>>>>>> 0f02557dc1b45f68fc8ae54f8e8a21a94269eb38
   rigidBody2D: {fileID: 2124268016}
 --- !u!4 &2124268015
 Transform:
@@ -4561,6 +4569,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5183631496127308279, guid: 45c667ce39e24a64aa16eee1585af7f9,
+        type: 3}
+      propertyPath: orthographic size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183631496127308279, guid: 45c667ce39e24a64aa16eee1585af7f9,
+        type: 3}
+      propertyPath: far clip plane
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183631496127308279, guid: 45c667ce39e24a64aa16eee1585af7f9,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5183631496127308278, guid: 45c667ce39e24a64aa16eee1585af7f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4615,21 +4638,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183631496127308279, guid: 45c667ce39e24a64aa16eee1585af7f9,
-        type: 3}
-      propertyPath: orthographic size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183631496127308279, guid: 45c667ce39e24a64aa16eee1585af7f9,
-        type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183631496127308279, guid: 45c667ce39e24a64aa16eee1585af7f9,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c667ce39e24a64aa16eee1585af7f9, type: 3}
