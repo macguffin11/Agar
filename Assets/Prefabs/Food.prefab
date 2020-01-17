@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 4221413387446316856}
   - component: {fileID: 8539477375006579405}
   - component: {fileID: 3457520908545291207}
+  - component: {fileID: 7716538636741102643}
   m_Layer: 0
   m_Name: Food
   m_TagString: Food
@@ -171,6 +172,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 1
+--- !u!114 &7716538636741102643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140520465745808362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5206fbee50d5fea4cb0722a6db0d344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.015686275, g: 0.11764707, b: 0.22352943, a: 1}
+  - {r: 0.882353, g: 0.36078432, b: 0.10588236, a: 1}
+  - {r: 0.90196085, g: 0.8941177, b: 0.15686275, a: 1}
+  - {r: 0.03137255, g: 0.3529412, b: 0.2392157, a: 1}
+  - {r: 0.8078432, g: 0.050980397, b: 0.050980397, a: 1}
+  part:
+  - {fileID: 8160189618753121057}
+  - {fileID: 3629922884779390936}
+  - {fileID: 7051246649054089929}
+  - {fileID: 4148061836047385653}
+  - {fileID: 8467509199146949234}
+  - {fileID: 6552838529834627327}
+  - {fileID: 4453890818421011522}
+  - {fileID: 6704789018972954}
+  - {fileID: 2192263091111946769}
 --- !u!1 &2192263091111946769
 GameObject:
   m_ObjectHideFlags: 0

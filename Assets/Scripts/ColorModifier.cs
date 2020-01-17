@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class ColorModifier : MonoBehaviour
 {
-    public List<Sprite> sprites = new List<Sprite>();
+    public List<Color> colors = new List<Color>();
+    public List<GameObject> part = new List<GameObject>();
 
     void Awake()
     {
-        GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Count)];
+        Color color = colors[Random.Range(0, colors.Count)];
+        foreach (GameObject partColor in part)
+        {
+            partColor.GetComponent<SpriteRenderer>().color = color;
+        }
     }
 }

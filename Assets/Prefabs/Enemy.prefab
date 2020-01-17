@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 6661430665175555633}
   - component: {fileID: 7306916200408151324}
   - component: {fileID: 6142471408491758781}
-  - component: {fileID: 9125501489704199851}
   - component: {fileID: 6080221236593240350}
   - component: {fileID: 3463901330723378494}
   - component: {fileID: 4250650714046427295}
@@ -133,62 +132,7 @@ MonoBehaviour:
   speedmovement: 30
   timeBeforeDash: 1.5
   target: {fileID: 0}
-  Area: 20
---- !u!60 &9125501489704199851
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6983231916637587165}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 10, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.4937142, y: 0.25608206}
-      - {x: 0.50047404, y: 0.22654751}
-      - {x: 0.33389845, y: 0.1887385}
-      - {x: 0.25082856, y: 0.06512419}
-      - {x: 0.2520392, y: -0.06757685}
-      - {x: 0.33382803, y: -0.18804416}
-      - {x: 0.500805, y: -0.22725451}
-      - {x: 0.4938827, y: -0.25715452}
-      - {x: 0.31647685, y: -0.21686086}
-      - {x: 0.22936407, y: -0.23178902}
-      - {x: 0.3355894, y: -0.3620336}
-      - {x: 0.31189552, y: -0.38113353}
-      - {x: 0.19667491, y: -0.23803987}
-      - {x: 0.13814808, y: -0.17937927}
-      - {x: 0.19538173, y: -0.3286944}
-      - {x: 0.1695795, y: -0.33857858}
-      - {x: 0.10370687, y: -0.17027326}
-      - {x: 0.0014507473, y: -0.21176797}
-      - {x: -0.3705424, y: -0.21146196}
-      - {x: -0.50038105, y: -0.00057742745}
-      - {x: -0.37041262, y: 0.21196702}
-      - {x: 0.0029599592, y: 0.21208623}
-      - {x: 0.10384841, y: 0.17260422}
-      - {x: 0.16866419, y: 0.34222674}
-      - {x: 0.19633155, y: 0.33164996}
-      - {x: 0.19648236, y: 0.24026896}
-      - {x: 0.3136051, y: 0.38198}
-      - {x: 0.33573306, y: 0.3628229}
-      - {x: 0.22873531, y: 0.23109385}
-      - {x: 0.31637174, y: 0.21621697}
+  Area: 17.5
 --- !u!58 &6080221236593240350
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : Utilities
+public class Level : MonoBehaviour
 {
     public GameObject foodPrefab;
     public List<GameObject> food = new List<GameObject>();
@@ -16,28 +16,22 @@ public class Level : Utilities
     private int maxFood = 100;
     private float radius;
 
-    // Awake is always called before any Start functions
-    void Awake()
-    {
-        
-    }
-
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
         if (audioManager == null)
         {
-            Print("No AudioManager found!", "error");
+            //Print("No AudioManager found!", "error");
         }
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager == null)
         {
-            Print("No GameManager found!", "error");
+            //Print("No GameManager found!", "error");
         }
         radius = Mathf.Sqrt(1f / Mathf.PI);
 
-        Print("Preparing game", "event");
+        //Print("Preparing game", "event");
         gameManager.currentState = GameManager.State.Preparing;
 
 
@@ -45,7 +39,7 @@ public class Level : Utilities
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (gameManager.currentState == GameManager.State.Playing)
         {
@@ -66,7 +60,7 @@ public class Level : Utilities
             gameManager.Reset();
             audioManager.PlaySound(backgroundMusic);
             Time.timeScale = 1.0f;
-            SpawnFood(initialFoodAmount);
+            StartCoroutine(SpawnFood(initialFoodAmount));
             gameManager.currentState = GameManager.State.Playing;
         }
     }
@@ -74,8 +68,8 @@ public class Level : Utilities
     /// <summary>
     /// Spawn a certain amount of food instances.
     /// </summary>
-    public void SpawnFood(int amount)
-    {
+    IEnumerator SpawnFood(int amount)
+    { 
         print("Spawning food: " + amount);
         for (int i = 0; i < amount; i++)
         {
@@ -85,6 +79,8 @@ public class Level : Utilities
             newFood.transform.localScale = new Vector3(radius, radius);
             food.Add(newFood);
         }
+
+        yield break;
     }
     public void SpawnFood(int amount, Vector3 pos)
     {

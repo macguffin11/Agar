@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dash : Utilities
 {
@@ -13,6 +14,9 @@ public class Dash : Utilities
     private float tempSpeed;
     private float dashTime;
     public float StartDashTime;
+    public GameObject imgCooldown;
+    public float cooldown = 5f;
+    bool isCooldown = false;
 
     // Use this for initialization
     void Start()
@@ -38,8 +42,7 @@ public class Dash : Utilities
 
     void FixedUpdate()
     {
-
-        if (dashTime <= 0 || transform.localScale.x <= massEject)
+        if (dashTime <= 0)
         {
             playerController.movementSpeed = tempSpeed;
         }
@@ -47,7 +50,6 @@ public class Dash : Utilities
         {
             dashTime -= Time.deltaTime;
             playerController.movementSpeed = dashSpeed;
-            Boost();
         }
     }
 
@@ -58,21 +60,27 @@ public class Dash : Utilities
         {
             StartDash();
         }
+
+        if (isCooldown)
+        {
+            imgCooldown.GetComponent<Image>().fillAmount += 1 / cooldown * Time.deltaTime;
+
+            if(imgCooldown.GetComponent<Image>().fillAmount >= 1)
+            {
+                imgCooldown.GetComponent<Image>().fillAmount = 0;
+                isCooldown = false;
+                imgCooldown.SetActive(false);
+            }
+        }
     }
 
     public void StartDash()
     {
-        dashTime = StartDashTime;
-    }
-
-    public void Boost()
-    {
-        Print("Boost", "log");
-        //Mengecil dan mengurangi point
-        float radPlayer = transform.localScale.x;
-        float diff = (Mathf.PI * radPlayer * radPlayer) - 1f;
-        radPlayer = Mathf.Sqrt(diff / Mathf.PI);
-        transform.localScale = new Vector3(radPlayer, radPlayer, 0);
-        gameManager.ChangeScore(-1);
+        if (!isCooldown)
+        {
+            dashTime = StartDashTime;
+        }
+        isCooldown = true;
+        imgCooldown.SetActive(true);
     }
 }
